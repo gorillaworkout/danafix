@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../Component/Header";
 import Article from "../../Component/Article";
 import Iklan from "../../Component/Iklan";
@@ -7,8 +7,17 @@ import { Tab, Row, Nav } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import Table from "react-bootstrap/Table";
 import ReactPaginate from "react-paginate";
+import {Link,useNavigate} from 'react-router-dom'
 
 export default function Home() {
+  const navigate = useNavigate()
+  const [idLogin,setIdLogin]=useState(localStorage.getItem('idLogin'))
+  console.log(idLogin)
+  useEffect(()=>{
+    if(!idLogin){
+      navigate('/')
+    }
+  },[])
   const [defaultData, setDefaultData] = useState([
     {
       tanggalPengajuan: "2023-01-10",

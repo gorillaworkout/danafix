@@ -17,6 +17,7 @@ export default function Login() {
             return val === phoneNumber
         })
         if(filter){
+            localStorage.setItem('idLogin',filter[0])
             navigate('/home')
         }
     }
