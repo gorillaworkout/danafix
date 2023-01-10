@@ -12,9 +12,22 @@ import {Link,useNavigate} from 'react-router-dom'
 export default function Home() {
   const navigate = useNavigate()
   const [idLogin,setIdLogin]=useState(localStorage.getItem('idLogin'))
+  const [dbPhone,setDbPhone]=useState([
+    '087785192296','087785192297','087785192298','087785192299'
+])
   console.log(idLogin)
   useEffect(()=>{
-    if(!idLogin){
+    if(idLogin){
+      console.log(idLogin)
+      let filter = dbPhone.filter((val,index)=>{
+        return val === idLogin
+      })
+      if(filter.length){
+        // stay page
+      }else {
+        navigate('/')
+      }
+    }else {
       navigate('/')
     }
   },[])
